@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "outDir": "build",
+        "allowSyntheticDefaultImports": true,
+        "target": "es5"
+    },
+    "compileOnSave": true,
+ 
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+
+}
