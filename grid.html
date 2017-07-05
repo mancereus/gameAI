@@ -18,9 +18,16 @@
             return false;
         }
 
-        function drag(ev) {
+        function dragStart(ev) {
             console.log(ev.target)
-            ev.dataTransfer.setData("text", ev.target.id);
+            ev.dataTransfer.setData("text", ev.target.id)
+            const fields = Array.from(document.getElementsByClassName('field'))
+            fields.forEach((element) => element.classList.toggle('greenBorder'))
+        }
+
+        function dragEnd(ev) {
+            const fields = Array.from(document.getElementsByClassName('field'))
+            fields.forEach((element) => element.classList.toggle('greenBorder'))
         }
 
         function drop(ev) {
@@ -51,12 +58,15 @@
             cursor: pointer;
             user-select: unset;
             border-radius: 10%;
+            padding-top: 10px;
         }
 
         .gray {
             background-color: gray;
         }
-
+        .greenBorder {
+            border: 5px dashed greenyellow;
+        }
         img.item {
             width: 70px;
             height: 70px;
@@ -67,25 +77,24 @@
 <body>
     <div class="container" ondrop="drop(event)" ondragover="allowDrop(event)">
         <div class="field gray">
-            <div id="kw" draggable="true" ondragstart="drag(event)"> king white </div>
         </div>
         <div class="field">
-            <img src="images/bkn.png" id="bkn" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+            <img src="images/bkn.png" id="bkn" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)" ondrop="denyDrop(event)" class="item" />
         </div>
         <div class="field gray">
-            <img src="images/bpa.png" id="bpa" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+            <img src="images/bpa.png" id="bpa" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)" ondrop="denyDrop(event)" class="item" />
         </div>
         <div class="field">
-            <img src="images/bbi.png" id="bbi" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+            <img src="images/bbi.png" id="bbi" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)" ondrop="denyDrop(event)" class="item" />
         </div>
         <div class="field gray">
-            <img src="images/bki.png" id="bki" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+            <img src="images/bki.png" id="bki" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)" ondrop="denyDrop(event)" class="item" />
         </div>
         <div class="field">
-            <img src="images/bqu.png" id="bqu" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+            <img src="images/bqu.png" id="bqu" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)" ondrop="denyDrop(event)" class="item" />
         </div>
         <div class="field gray">
-            <img src="images/bro.png" id="bro" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+            <img src="images/bro.png" id="bro" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)" ondrop="denyDrop(event)" class="item" />
         </div>
         <div class="field">
         </div>
