@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link href="css/style.css" rel="stylesheet">-->
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function denyDrop(ev) {
+            console.log("denied")
+            ev.preventDefault();  
+            ev.stopPropagation()          
+            return false;
+        }
+
+        function drag(ev) {
+            console.log(ev.target)
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            console.log("drop")
+            ev.preventDefault();
+            // var data = ev.dataTransfer.getData("text");
+            // const dropper = ev.path.filter((item) => item.className && item.className.includes("field"))[0]
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(4, 100px);
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            align-content: stretch;
+        }
+
+        .field {
+            border: 1px solid black;
+            justify-self: stretch;
+            align-self: stretch;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: unset;
+            border-radius: 10%;
+        }
+
+        .gray {
+            background-color: gray;
+        }
+
+        img.item {
+            width: 70px;
+            height: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="field gray">
+            <div id="kw" draggable="true" ondragstart="drag(event)"> king white </div>
+        </div>
+        <div class="field">
+            <img src="images/bkn.png" id="bkn" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+        </div>
+        <div class="field gray">
+            <img src="images/bpa.png" id="bpa" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+        </div>
+        <div class="field">
+            <img src="images/bbi.png" id="bbi" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+        </div>
+        <div class="field gray">
+            <img src="images/bki.png" id="bki" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+        </div>
+        <div class="field">
+            <img src="images/bqu.png" id="bqu" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+        </div>
+        <div class="field gray">
+            <img src="images/bro.png" id="bro" draggable="true" ondragstart="drag(event)" ondrop="denyDrop(event)" class="item" />
+        </div>
+        <div class="field">
+        </div>
+        <div class="field gray">
+        </div>
+        <div class="field">
+        </div>
+    </div>
+</body>
+
+</html>
